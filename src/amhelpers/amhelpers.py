@@ -46,3 +46,28 @@ def get_class_from_str(s):
         The uninitialized class `s`.
     '''
     return pydoc.locate(s)
+
+def yield_nested_dict_values(d):
+    '''Yield (non-dict) values from a nested dict.
+
+    Code from [1]_.
+
+    Parameters
+    ----------
+    d : dict
+        Nested dictionary.
+
+    Returns
+    -------
+    generator
+        Iterator yielding all (non-dict) values from 'd' and its child dictionaries.
+
+    References
+    ----------
+    .. [1] https://tutorial.eyehunts.com/python/python-get-all-values-from-nested-dictionary-example-code/
+    '''
+    for v in d.values():
+        if isinstance(v, dict):
+            yield from get_nested_dict_values(v)
+        else:
+            yield v
