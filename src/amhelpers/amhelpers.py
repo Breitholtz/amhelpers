@@ -2,7 +2,7 @@ import pydoc
 
 def create_object_from_dict(d, **default_kwargs):
     '''Create an object from a dictionary.
-    
+
     Inspired by `iglovikov_helper_functions.config_parsing.utils`. [1]_
 
     Parameters
@@ -17,7 +17,7 @@ def create_object_from_dict(d, **default_kwargs):
     -------
     object
         The initialized object.
-    
+
     References
     ----------
     .. [1] https://github.com/ternaus/iglovikov_helper_functions/
@@ -39,7 +39,7 @@ def get_class_from_str(s):
     ----------
     s : str
         The name of the class.
-    
+
     Returns
     -------
     class
@@ -68,6 +68,6 @@ def yield_nested_dict_values(d):
     '''
     for v in d.values():
         if isinstance(v, dict):
-            yield from get_nested_dict_values(v)
+            yield from yield_nested_dict_values(v)
         else:
             yield v
